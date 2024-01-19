@@ -1,0 +1,47 @@
+package code.insertar;
+
+import Singleton.EmfSingleton;
+import entities.ProjectEntity;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.EntityManagerFactory;
+import jakarta.persistence.EntityTransaction;
+import libs.Leer;
+
+import java.sql.Date;
+import java.time.LocalDate;
+
+public class insProject {
+    public static void insertarProyecto() {
+        String title = Leer.pedirCadena("Inserte el nombre del proyecto");
+        String web = Leer.pedirCadena("Inserte ela URL de la web");
+        String projectDescription = Leer.pedirCadena("Inserte la descripción del proyecto");
+        String state = Leer.pedirCadena("Inserte el estado del proyecto");
+//        String initDate = Leer.pedirCadena("Inserte la fecha de inicio del proyecto");  //TODO asegurarse que funciona
+//        String endDate = Leer.pedirCadena("Inserte la fecha de finalización del proyecto");  //TODO asegurarse que funciona
+
+        EntityManagerFactory emf = EmfSingleton.getInstance().getEmf();
+        EntityManager em = emf.createEntityManager();
+        try {
+
+            EntityTransaction transaction = em.getTransaction();
+            transaction.begin();
+
+            ProjectEntity projecto = new ProjectEntity();
+            projecto.setTitle(title);
+            projecto.setWeb(web);
+            projecto.setProjectDescription(projectDescription);
+            projecto.setState(state);
+            projecto.setInitDate(Date.valueOf(LocalDate.now()));
+//            projecto.setInitDate(Date.valueOf(initDate));
+//            projecto.setEndDate(Date.valueOf(endDate));
+
+            em.persist(projecto);
+            transaction.commit();
+        } catch (Exception e) {
+            System.err.println(">>> Error: " + e.getMessage());
+            e.printStackTrace();
+        } finally {
+            em.close();
+        }
+    }
+}

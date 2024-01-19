@@ -1,3 +1,5 @@
+import code.insertar.insProject;
+
 public class Menu {
     public static void main(String[] args) {
         boolean salir = false;
@@ -15,7 +17,7 @@ public class Menu {
 
             switch (opcion) {
                 case "0" -> salir = true;
-                case "1" -> {}
+                case "1" -> code.insertar.insProject.insertarProyecto();
                 case "2" -> {}
                 case "3" -> {}
                 case "4" -> {}
