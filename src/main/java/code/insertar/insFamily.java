@@ -1,18 +1,16 @@
 package code.insertar;
 
 import Singleton.EmfSingleton;
-import entities.EntityEntity;
+import entities.FamilyEntity;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.EntityTransaction;
 import libs.Leer;
 
-public class insEntity {
-    public static void insertarEntity() {
-        String name = Leer.pedirCadena("Introduzca el nombre del centro");
-        String code = Leer.pedirCadena("Introduzca el codigo del centro");
-        String web = Leer.pedirCadena("Introduzca la URL de la web");
-        String email = Leer.pedirCadena("Introduzca el email del centro");
+public class insFamily {
+    public static void insertarFamily() {
+        String name = Leer.pedirCadena("Inserte el nombre");
+        String code = Leer.pedirCadena("Inserte el codigo");
 
         EntityManagerFactory emf = EmfSingleton.getInstance().getEmf();
         EntityManager em = emf.createEntityManager();
@@ -20,13 +18,11 @@ public class insEntity {
             EntityTransaction transaction = em.getTransaction();
             transaction.begin();
 
-            EntityEntity entity = new EntityEntity();
-            entity.setEntityName(name);
-            entity.setEntityCode(code);
-            entity.setWeb(web);
-            entity.setEmail(email);
+            FamilyEntity family = new FamilyEntity();
+            family.setFamilyName(name);
+            family.setFamilyCode(code);
 
-            em.persist(entity);
+            em.persist(family);
             transaction.commit();
         } catch (Exception e) {
             System.err.println(">>> Error: " + e.getMessage());

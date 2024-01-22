@@ -17,8 +17,8 @@ public class Menu {
 
             switch (opcion) {
                 case "0" -> salir = true;
-                case "1" -> code.insertar.insProject.insertarProyecto();
-                case "2" -> {}
+                case "1" -> code.insertar.seleccion.seleccionarInserccion();
+                case "2" -> code.eliminar.drpEntity.eliminarEntity();
                 case "3" -> {}
                 case "4" -> {}
                 default -> System.err.println("La opción introducida no es valida");
