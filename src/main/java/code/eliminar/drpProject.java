@@ -1,7 +1,6 @@
 package code.eliminar;
 
 import Singleton.EmfSingleton;
-import entities.FamilyEntity;
 import entities.ProjectEntity;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
@@ -9,7 +8,7 @@ import jakarta.persistence.EntityTransaction;
 import libs.Leer;
 
 public class drpProject {
-    public static void eliminarEntity() {
+    public static void eliminarProject() {
         String code = Leer.pedirCadena("Introduzca el ID del proyecto que desea eliminar");
 
         EntityManagerFactory emf = EmfSingleton.getInstance().getEmf();
@@ -26,7 +25,7 @@ public class drpProject {
                 em.remove(project);
                 System.out.println("Proyecto eliminado exitosamente.");
             } else {
-                System.out.println("No se encontró ningun proyecto con el ID proporcionado.");
+                System.err.println("No se encontró ningun proyecto con el ID proporcionado.");
             }
 
             transaction.commit();

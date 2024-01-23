@@ -1,7 +1,6 @@
 package code.eliminar;
 
 import Singleton.EmfSingleton;
-import entities.EntityEntity;
 import entities.FamilyEntity;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
@@ -9,7 +8,7 @@ import jakarta.persistence.EntityTransaction;
 import libs.Leer;
 
 public class drpFamily {
-    public static void eliminarEntity() {
+    public static void eliminarFamily() {
         String code = Leer.pedirCadena("Introduzca el ID de la familia que desea eliminar");
 
         EntityManagerFactory emf = EmfSingleton.getInstance().getEmf();
@@ -26,7 +25,7 @@ public class drpFamily {
                 em.remove(family);
                 System.out.println("Familia eliminada exitosamente.");
             } else {
-                System.out.println("No se encontró ninguna familia con el ID proporcionado.");
+                System.err.println("No se encontró ninguna familia con el ID proporcionado.");
             }
 
             transaction.commit();

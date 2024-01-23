@@ -25,7 +25,7 @@ public class drpEntity {
                 em.remove(entity);
                 System.out.println("Centro eliminado exitosamente.");
             } else {
-                System.out.println("No se encontró ningun centro con el ID proporcionado.");
+                System.err.println("No se encontró ningun centro con el ID proporcionado.");
             }
 
             transaction.commit();
