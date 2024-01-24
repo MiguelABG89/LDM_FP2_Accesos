@@ -1,6 +1,3 @@
-import code.insertar.insProject;
-import code.eliminar.drpEntity;
-
 public class Menu {
     public static void main(String[] args) {
         boolean salir = false;

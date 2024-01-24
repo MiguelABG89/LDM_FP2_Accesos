@@ -17,11 +17,11 @@ public class drpUser {
             EntityTransaction transaction = em.getTransaction();
             transaction.begin();
 
-            // Buscar la entidad por el código
+            // Buscar el usuario por el código
             UsersEntity usuario = em.find(UsersEntity.class, code);
 
             if (usuario != null) {
-                // Si la entidad existe, se elimina
+                // Si el usuario existe, se elimina
                 em.remove(usuario);
                 System.out.println("usuario eliminado exitosamente.");
             } else {

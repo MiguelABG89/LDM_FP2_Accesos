@@ -1,15 +1,17 @@
-package code.eliminar;
+package code.insertar;
 
 import Singleton.EmfSingleton;
-import entities.FamilyEntity;
+import entities.EntityEntity;
+import entities.ImplementEntity;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.EntityTransaction;
 import libs.Leer;
 
-public class drpFamily {
-    public static void eliminarFamily() {
-        String code = Leer.pedirCadena("Introduzca el ID de la familia que desea eliminar");
+public class insImplement {
+    public static void insertarImplement() {
+        Long idProyecto = Leer.pedirLong("Introduzca el ID del proyecto");
+        Long idTecnologia = Leer.pedirLong("Introduzca el ID de la tecnologia");
 
         EntityManagerFactory emf = EmfSingleton.getInstance().getEmf();
         EntityManager em = emf.createEntityManager();
@@ -17,17 +19,11 @@ public class drpFamily {
             EntityTransaction transaction = em.getTransaction();
             transaction.begin();
 
-            // Buscar la familia por el código
-            FamilyEntity family = em.find(FamilyEntity.class, code);
+            ImplementEntity implement = new ImplementEntity();
+            implement.setIdProject(idProyecto);
+            implement.setIdTechnology(idTecnologia);
 
-            if (family != null) {
-                // Si la familia existe, se elimina
-                em.remove(family);
-                System.out.println("Familia eliminada exitosamente.");
-            } else {
-                System.err.println("No se encontró ninguna familia con el ID proporcionado.");
-            }
-
+            em.persist(implement);
             transaction.commit();
         } catch (Exception e) {
             System.err.println(">>> Error: " + e.getMessage());

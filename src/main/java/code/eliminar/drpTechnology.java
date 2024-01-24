@@ -17,11 +17,11 @@ public class drpTechnology {
             EntityTransaction transaction = em.getTransaction();
             transaction.begin();
 
-            // Buscar la entidad por el código
+            // Buscar la tecnologia por el código
             TechnologyEntity technology = em.find(TechnologyEntity.class, code);
 
             if (technology != null) {
-                // Si la entidad existe, se elimina
+                // Si la tecnologia existe, se elimina
                 em.remove(technology);
                 System.out.println("Tecnologia eliminada exitosamente.");
             } else {

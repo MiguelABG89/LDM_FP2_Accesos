@@ -1,15 +1,15 @@
 package code.eliminar;
 
 import Singleton.EmfSingleton;
-import entities.ProjectEntity;
+import entities.ImplementEntity;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.EntityTransaction;
 import libs.Leer;
 
-public class drpProject {
-    public static void eliminarProject() {
-        String code = Leer.pedirCadena("Introduzca el ID del proyecto que desea eliminar");
+public class drpImplement {
+    public static void eliminarImplement() {
+        String code = Leer.pedirCadena("Introduzca el ID del implement que desea eliminar");
 
         EntityManagerFactory emf = EmfSingleton.getInstance().getEmf();
         EntityManager em = emf.createEntityManager();
@@ -17,15 +17,15 @@ public class drpProject {
             EntityTransaction transaction = em.getTransaction();
             transaction.begin();
 
-            // Buscar el proyecto por el código
-            ProjectEntity project = em.find(ProjectEntity.class, code);
+            // Buscar el implement por el código
+            ImplementEntity implement = em.find(ImplementEntity.class, code);
 
-            if (project != null) {
-                // Si el proyecto existe, se elimina
-                em.remove(project);
-                System.out.println("Proyecto eliminado exitosamente.");
+            if (implement != null) {
+                // Si el implement existe, eliminarla
+                em.remove(implement);
+                System.out.println("Implement eliminado exitosamente.");
             } else {
-                System.err.println("No se encontró ningun proyecto con el ID proporcionado.");
+                System.err.println("No se encontró ningun implement con el ID proporcionado.");
             }
 
             transaction.commit();

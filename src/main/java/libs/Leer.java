@@ -277,7 +277,7 @@ public class Leer {
                 mostrarEnPantalla("Vuelve a introducir el dato, por favor. ");
                 error = true;
             } catch (NumberFormatException e) {
-                mostrarEnPantalla("El dato introducido no es decimal.");
+                mostrarEnPantalla("El dato introducido no es una fecha.");
                 error = true;
             } catch (ParseException e) {
                 throw new RuntimeException(e);
@@ -286,20 +286,40 @@ public class Leer {
         return dato;
     }
 
-    static public byte[] pedirByte (final String texto) {
+    static public boolean pedirBoolean (final String texto) {
         BufferedReader dataIn = new BufferedReader(new InputStreamReader(System.in));
-        byte[] dato = null;
+        boolean dato = false;
         boolean error = true;
         while (error) {
             try {
                 mostrarEnPantalla(texto);
-                String input = dataIn.readLine();
+                dato = Boolean.parseBoolean(dataIn.readLine());
                 error = false;
             } catch (IOException e) {
                 mostrarEnPantalla("Vuelve a introducir el dato, por favor. ");
                 error = true;
             } catch (NumberFormatException e) {
-                mostrarEnPantalla("El dato introducido no es decimal.");
+                mostrarEnPantalla("El dato introducido no es booleano.");
+                error = true;
+            }
+        }
+        return dato;
+    }
+
+    static public Long pedirLong (final String texto) {
+        BufferedReader dataIn = new BufferedReader(new InputStreamReader(System.in));
+        Long dato = null;
+        boolean error = true;
+        while (error) {
+            try {
+                mostrarEnPantalla(texto);
+                dato = Long.parseLong(dataIn.readLine());
+                error = false;
+            } catch (IOException e) {
+                mostrarEnPantalla("Vuelve a introducir el dato, por favor. ");
+                error = true;
+            } catch (NumberFormatException e) {
+                mostrarEnPantalla("El dato introducido no es Long.");
                 error = true;
             }
         }

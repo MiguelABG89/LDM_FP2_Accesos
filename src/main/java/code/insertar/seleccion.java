@@ -21,12 +21,12 @@ public class seleccion {
 
             switch (opcion) {
                 case "0" -> salir = true;
-                case "1" -> {}
+                case "1" -> insCollaboration.insertarCollaboration();
                 case "2" -> insEntity.insertarEntity();
                 case "3" -> insFamily.insertarFamily();
-                case "4" -> {}
-                case "5" -> {}
-                case "6" -> insProject.insertarProyecto();
+                case "4" -> insFavourite.insertarFavourite();
+                case "5" -> insImplement.insertarImplement();
+                case "6" -> insProject.insertarProyecto();  // TODO
                 case "7" -> insTechnology.insertarTechnology();
                 case "8" -> insUser.insertarUser();
                 default -> System.err.println("La opción introducida no es valida");

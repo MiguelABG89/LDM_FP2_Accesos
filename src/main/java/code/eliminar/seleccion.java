@@ -21,11 +21,11 @@ public class seleccion {
 
             switch (opcion) {
                 case "0" -> salir = true;
-                case "1" -> {}
+                case "1" -> drpCollaboration.eliminarCollaboration();
                 case "2" -> drpEntity.eliminarEntity();
                 case "3" -> drpFamily.eliminarFamily();
-                case "4" -> {}
-                case "5" -> {}
+                case "4" -> drpFavourite.eliminarFavourite();
+                case "5" -> drpImplement.eliminarImplement();
                 case "6" -> drpProject.eliminarProject();
                 case "7" -> drpTechnology.eliminarTechnology();
                 case "8" -> drpUser.eliminarUser();
