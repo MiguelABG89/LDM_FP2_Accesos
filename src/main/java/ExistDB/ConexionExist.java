@@ -12,7 +12,7 @@ public class ConexionExist {
     final static String URI = "xmldb:exist://localhost:8080/exist/xmlrpc/db/"; //URI
     final static String usu = "admin"; //Usuario
     final static String usuPwd = ""; //Clave
-    static Collection colRaiz = null; //colección para almacenar las consultas
+    static Collection colRaiz = null; //colección para almacenar las consultas+
     public static Collection conectar(){
         try {
             Class cl = Class.forName(driver); //Cargar del driver
