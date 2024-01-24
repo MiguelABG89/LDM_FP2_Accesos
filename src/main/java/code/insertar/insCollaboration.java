@@ -9,15 +9,10 @@ import libs.Leer;
 
 public class insCollaboration {
     public static void insertarCollaboration() {
-        Long idProyecto = Leer.pedirLong("Introduzca el ID del proyecto");
-        Long idUsuario = Leer.pedirLong("Introduzca el ID del usuario");
-        Long idFamilia = Leer.pedirLong("Introduzca el ID de la familia");
-        boolean userAdmin = Leer.pedirBoolean("El usuario es administrador (S/N)");
-        byte esAdmin = 0;
-
-        if (userAdmin) {
-            esAdmin = 1;
-        }
+        int idProyecto = Leer.pedirEntero("Introduzca el ID del proyecto");
+        int idUsuario = Leer.pedirEntero("Introduzca el ID del usuario");
+        int idFamilia = Leer.pedirEntero("Introduzca el ID de la familia");
+        Boolean esAdmin = Leer.pedirBoolean("El usuario es administrador (S/N)");
 
         EntityManagerFactory emf = EmfSingleton.getInstance().getEmf();
         EntityManager em = emf.createEntityManager();
@@ -30,7 +25,7 @@ public class insCollaboration {
             collaboration.setIdProject(idProyecto);
             collaboration.setIdUser(idUsuario);
             collaboration.setIdFamily(idFamilia);
-            collaboration.setIsManager(esAdmin);
+            collaboration.setManager(esAdmin);
 
             em.persist(collaboration);
             transaction.commit();

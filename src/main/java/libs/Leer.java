@@ -286,14 +286,18 @@ public class Leer {
         return dato;
     }
 
-    static public boolean pedirBoolean (final String texto) {
+    static public Boolean pedirBoolean (final String texto) {
         BufferedReader dataIn = new BufferedReader(new InputStreamReader(System.in));
-        boolean dato = false;
+        Boolean dato = false;
+        String valorIntroducido = null;
         boolean error = true;
         while (error) {
             try {
                 mostrarEnPantalla(texto);
-                dato = Boolean.parseBoolean(dataIn.readLine());
+                valorIntroducido = dataIn.readLine();
+                if (valorIntroducido.equalsIgnoreCase("S")) {
+                    dato = true;
+                }
                 error = false;
             } catch (IOException e) {
                 mostrarEnPantalla("Vuelve a introducir el dato, por favor. ");
