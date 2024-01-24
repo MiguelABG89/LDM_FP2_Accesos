@@ -5,12 +5,12 @@
              version="3.0">
   <persistence-unit name="default">
       <class>entities.CollaborationEntity</class>
-      <class>entities.EntityEntity</class>
       <class>entities.FamilyEntity</class>
       <class>entities.FavouriteEntity</class>
       <class>entities.ImplementEntity</class>
       <class>entities.ProjectEntity</class>
       <class>entities.TechnologyEntity</class>
+      <class>entities.EntityEntity</class>
       <class>entities.UsersEntity</class>
 
       <properties>

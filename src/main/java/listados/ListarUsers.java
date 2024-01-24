@@ -24,6 +24,7 @@ public class ListarUsers {
 
             // MOSTRAR LOS DATOS EN PANTALLA ----------
             System.out.println("\n- ID DEL USUARIO: " + u.getId());
+            System.out.println("- ID CENTRO: " + u.getIdEntity());
             System.out.println("- LOGIN: " + u.getLogin());
             System.out.println("- NOMBRE: " +u.getUserName());
             System.out.println("- APELLIDO: " + u.getSurname());

@@ -24,6 +24,9 @@ public class UsersEntity {
     @Basic
     @Column(name = "LinkedIn", nullable = true, length = 30)
     private String linkedIn;
+    @Basic
+    @Column(name = "IdEntity", nullable = true)
+    private Integer idEntity;
 
     public Integer getId() {
         return id;
@@ -73,6 +76,14 @@ public class UsersEntity {
         this.linkedIn = linkedIn;
     }
 
+    public Integer getIdEntity() {
+        return idEntity;
+    }
+
+    public void setIdEntity(Integer idEntity) {
+        this.idEntity = idEntity;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -86,6 +97,7 @@ public class UsersEntity {
         if (surname != null ? !surname.equals(that.surname) : that.surname != null) return false;
         if (email != null ? !email.equals(that.email) : that.email != null) return false;
         if (linkedIn != null ? !linkedIn.equals(that.linkedIn) : that.linkedIn != null) return false;
+        if (idEntity != null ? !idEntity.equals(that.idEntity) : that.idEntity != null) return false;
 
         return true;
     }
@@ -98,6 +110,7 @@ public class UsersEntity {
         result = 31 * result + (surname != null ? surname.hashCode() : 0);
         result = 31 * result + (email != null ? email.hashCode() : 0);
         result = 31 * result + (linkedIn != null ? linkedIn.hashCode() : 0);
+        result = 31 * result + (idEntity != null ? idEntity.hashCode() : 0);
         return result;
     }
 }
