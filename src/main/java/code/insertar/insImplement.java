@@ -10,8 +10,8 @@ import libs.Leer;
 
 public class insImplement {
     public static void insertarImplement() {
-        Long idProyecto = Leer.pedirLong("Introduzca el ID del proyecto");
-        Long idTecnologia = Leer.pedirLong("Introduzca el ID de la tecnologia");
+        int idProyecto = Leer.pedirEntero("Introduzca el ID del proyecto");
+        int idTecnologia = Leer.pedirEntero("Introduzca el ID de la tecnologia");
 
         EntityManagerFactory emf = EmfSingleton.getInstance().getEmf();
         EntityManager em = emf.createEntityManager();

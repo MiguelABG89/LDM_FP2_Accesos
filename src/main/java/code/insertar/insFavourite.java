@@ -9,8 +9,8 @@ import libs.Leer;
 
 public class insFavourite {
     public static void insertarFavourite() {
-        Long idProyecto = Leer.pedirLong("Introduzca el ID del proyecto");
-        Long idUsuario = Leer.pedirLong("Introduzca el ID del usuario");
+        int idProyecto = Leer.pedirEntero("Introduzca el ID del proyecto");
+        int idUsuario = Leer.pedirEntero("Introduzca el ID del usuario");
 
         EntityManagerFactory emf = EmfSingleton.getInstance().getEmf();
         EntityManager em = emf.createEntityManager();
