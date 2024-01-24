@@ -23,6 +23,7 @@ public class ListarUsers {
         for (UsersEntity u : listaUsers) {
 
             // MOSTRAR LOS DATOS EN PANTALLA ----------
+            System.out.println("\n- ID DEL USUARIO: " + u.getId());
             System.out.println("- LOGIN: " + u.getLogin());
             System.out.println("- NOMBRE: " +u.getUserName());
             System.out.println("- APELLIDO: " + u.getSurname());

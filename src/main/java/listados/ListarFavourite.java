@@ -22,6 +22,7 @@ public class ListarFavourite {
         for (FavouriteEntity f : listaFavoritos) {
 
             // MOSTRAR LOS DATOS EN PANTALLA ----------
+            System.out.println("\n- ID DE FAVORITO: " + f.getId());
             System.out.println("- ID DE PROYECTO: " + f.getIdProject());
             System.out.println("- ID DE USUARIO: " + f.getIdUser());
             System.out.println("***********************************************************");

@@ -23,6 +23,7 @@ public class ListarEntity {
 
                 // MOSTRAR LOS DATOS EN PANTALLA ----------
                 System.out.println("\n*******[ CENTRO " + c.getEntityName() + " ]*******");
+                System.out.println("- ID DEL CENTRO: " + c.getId());
                 System.out.println("- CÓDIGO DEL CENTRO: " + c.getEntityCode());
                 System.out.println("- WEB: " + c.getWeb());
                 System.out.println("- EMAIL: " + c.getEmail());

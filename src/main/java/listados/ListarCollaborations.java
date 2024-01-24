@@ -22,6 +22,7 @@ public class ListarCollaborations {
         for (CollaborationEntity c : listaCollabs) {
 
             // MOSTRAR LOS DATOS EN PANTALLA ----------
+            System.out.println("\n- ID DE COLABORACIÓN: " + c.getId());
             System.out.println("- ID DE PROYECTO: " + c.getIdProject());
             System.out.println("- ID DE USUARIO: " + c.getIdUser());
             System.out.println("- ID DE FAMILIA: " + c.getIdFamily());

@@ -1,7 +1,6 @@
 package listados;
 
 import Singleton.EmfSingleton;
-import entities.CollaborationEntity;
 import entities.TechnologyEntity;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.Query;
@@ -23,8 +22,9 @@ public class ListarTechnology {
         for (TechnologyEntity t : listaTecnologias) {
 
             // MOSTRAR LOS DATOS EN PANTALLA ----------
+            System.out.println("- ID DE TECNOLOGÍA: " + t.getId());
             System.out.println("- TECNOLOGÍA: " + t.getTechName());
-            System.out.println("- TAG: " + t.getTag()); // todo preguntar qué es
+            System.out.println("- TAG: " + t.getTag());
             System.out.println("***********************************************************");
 
         }

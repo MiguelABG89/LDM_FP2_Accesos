@@ -3,13 +3,14 @@ package listados;
 import Singleton.EmfSingleton;
 import entities.FamilyEntity;
 import jakarta.persistence.EntityManager;
+import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Query;
 
 import java.util.ArrayList;
 
 public class ListarFamily {
-
-    static EntityManager em = EmfSingleton.getInstance().getEmf().createEntityManager();
+    static EntityManagerFactory emf = EmfSingleton.getInstance().getEmf();
+    static EntityManager em = emf.createEntityManager();
 
     public static void listarFamily() {
 
@@ -23,6 +24,7 @@ public class ListarFamily {
 
             // MOSTRAR LOS DATOS EN PANTALLA ----------
             System.out.println("\n*******[ FAMILIA " + f.getFamilyName() + " ]*******");
+            System.out.println("- ID FAMILIA: " + f.getId());
             System.out.println("- CÓDIGO: " + f.getFamilyCode());
             System.out.println("***********************************************************");
 

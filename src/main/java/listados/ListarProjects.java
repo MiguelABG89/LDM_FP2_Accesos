@@ -23,6 +23,7 @@ public class ListarProjects {
 
             // MOSTRAR LOS DATOS EN PANTALLA ----------
             System.out.println("\n*******[ PROYECTO " + p.getTitle() + " ]*******");
+            System.out.println("- ID DE PROYECTO: " + p.getId());
             System.out.println("- LOGO: " + p.getLogo());
             System.out.println("- WEB: " + p.getWeb());
             System.out.println("- DESCRIPCIÓN DEL PROYECTO: " + p.getProjectDescription() + " €");
