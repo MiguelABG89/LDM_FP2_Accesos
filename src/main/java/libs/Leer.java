@@ -3,6 +3,9 @@ package libs;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.regex.PatternSyntaxException;
 
 public class Leer {
@@ -254,6 +257,70 @@ public class Leer {
             } catch (PatternSyntaxException e) {
                 mostrarEnPantalla("La expresi�n regular no es correcta.");
                 System.exit(0);
+            }
+        }
+        return dato;
+    }
+
+    static public Date pedirDate(final String texto) {
+        BufferedReader dataIn = new BufferedReader(new InputStreamReader(System.in));
+        Date dato = null;
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        boolean error = true;
+        while (error) {
+            try {
+                mostrarEnPantalla(texto);
+                String input = dataIn.readLine();
+                dato = sdf.parse(input);
+                error = false;
+            } catch (IOException e) {
+                mostrarEnPantalla("Vuelve a introducir el dato, por favor. ");
+                error = true;
+            } catch (NumberFormatException e) {
+                mostrarEnPantalla("El dato introducido no es una fecha.");
+                error = true;
+            } catch (ParseException e) {
+                throw new RuntimeException(e);
+            }
+        }
+        return dato;
+    }
+
+    static public boolean pedirBoolean (final String texto) {
+        BufferedReader dataIn = new BufferedReader(new InputStreamReader(System.in));
+        boolean dato = false;
+        boolean error = true;
+        while (error) {
+            try {
+                mostrarEnPantalla(texto);
+                dato = Boolean.parseBoolean(dataIn.readLine());
+                error = false;
+            } catch (IOException e) {
+                mostrarEnPantalla("Vuelve a introducir el dato, por favor. ");
+                error = true;
+            } catch (NumberFormatException e) {
+                mostrarEnPantalla("El dato introducido no es booleano.");
+                error = true;
+            }
+        }
+        return dato;
+    }
+
+    static public Long pedirLong (final String texto) {
+        BufferedReader dataIn = new BufferedReader(new InputStreamReader(System.in));
+        Long dato = null;
+        boolean error = true;
+        while (error) {
+            try {
+                mostrarEnPantalla(texto);
+                dato = Long.parseLong(dataIn.readLine());
+                error = false;
+            } catch (IOException e) {
+                mostrarEnPantalla("Vuelve a introducir el dato, por favor. ");
+                error = true;
+            } catch (NumberFormatException e) {
+                mostrarEnPantalla("El dato introducido no es Long.");
+                error = true;
             }
         }
         return dato;

@@ -14,22 +14,10 @@
       <class>entities.UsersEntity</class>
 
       <properties>
-          <property name="toplink.jdbc.url" value="jdbc:mysql://54.37.220.4:3306/LDM_MySQL"/>
-          <property name="toplink.jdbc.driver" value="com.mysql.cj.jdbc.Driver"/>
-          <property name="toplink.jdbc.user" value="LDMProyecto"/>
-          <property name="toplink.jdbc.password" value="2@ASjDFn934_Pkle"/>
           <property name="hibernate.connection.url" value="jdbc:mysql://54.37.220.4:3306/LDM_MySQL"/>
           <property name="hibernate.connection.driver_class" value="com.mysql.cj.jdbc.Driver"/>
           <property name="hibernate.connection.username" value="LDMProyecto"/>
           <property name="hibernate.connection.password" value="2@ASjDFn934_Pkle"/>
-          <property name="openjpa.ConnectionURL" value="jdbc:mysql://54.37.220.4:3306/LDM_MySQL"/>
-          <property name="openjpa.ConnectionDriverName" value="com.mysql.cj.jdbc.Driver"/>
-          <property name="openjpa.ConnectionUserName" value="LDMProyecto"/>
-          <property name="openjpa.ConnectionPassword" value="2@ASjDFn934_Pkle"/>
-          <property name="eclipselink.jdbc.url" value="jdbc:mysql://54.37.220.4:3306/LDM_MySQL"/>
-          <property name="eclipselink.jdbc.driver" value="com.mysql.cj.jdbc.Driver"/>
-          <property name="eclipselink.jdbc.user" value="LDMProyecto"/>
-          <property name="eclipselink.jdbc.password" value="2@ASjDFn934_Pkle"/>
       </properties>
   </persistence-unit>
 </persistence>
