@@ -3,9 +3,8 @@ package libs;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import java.sql.Date;
+import java.util.List;
 import java.util.regex.PatternSyntaxException;
 
 public class Leer {
@@ -264,14 +263,13 @@ public class Leer {
 
     static public Date pedirDate(final String texto) {
         BufferedReader dataIn = new BufferedReader(new InputStreamReader(System.in));
-        Date dato = null;
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        java.sql.Date dato = null;
         boolean error = true;
         while (error) {
             try {
                 mostrarEnPantalla(texto);
                 String input = dataIn.readLine();
-                dato = sdf.parse(input);
+                dato = java.sql.Date.valueOf(input);
                 error = false;
             } catch (IOException e) {
                 mostrarEnPantalla("Vuelve a introducir el dato, por favor. ");
@@ -279,8 +277,6 @@ public class Leer {
             } catch (NumberFormatException e) {
                 mostrarEnPantalla("El dato introducido no es una fecha.");
                 error = true;
-            } catch (ParseException e) {
-                throw new RuntimeException(e);
             }
         }
         return dato;
@@ -324,6 +320,30 @@ public class Leer {
                 error = true;
             } catch (NumberFormatException e) {
                 mostrarEnPantalla("El dato introducido no es Long.");
+                error = true;
+            }
+        }
+        return dato;
+    }
+
+    static public String pedirOpcion (final String texto, final List<String> opciones) {
+        BufferedReader dataIn = new BufferedReader(new InputStreamReader(System.in));
+        String dato = null;
+        boolean error = true;
+        while (error) {
+            try {
+                mostrarEnPantalla(texto);
+                dato = dataIn.readLine();
+                for (String opcion : opciones) {
+                    if (dato.equals(opcion)) {
+                        error = false;
+                    }
+                }
+            } catch (IOException e) {
+                mostrarEnPantalla("Vuelve a introducir el dato, por favor. ");
+                error = true;
+            } catch (NumberFormatException e) {
+                mostrarEnPantalla("El dato introducido no es String.");
                 error = true;
             }
         }

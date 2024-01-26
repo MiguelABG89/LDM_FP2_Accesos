@@ -1,22 +1,23 @@
 package code.eliminar;
 
-public class seleccion {
+public class menuEliminar {
     public static void seleccionarDelete() {
         boolean salir = false;
         String opcion;
         while (!salir) {
             System.out.println("""
-                    *******************************************
-                    0. Salir
-                    1. Borrar Collaboration
-                    2. Borrar Entity
-                    3. Borrar Family
-                    4. Borrar Favourite
-                    5. Borrar Implement
-                    6. Borrar Project
-                    7. Borrar Technology
-                    8. Borrar Users
-                    *******************************************""");
+            \n***************[ ELIMINAR ]***************
+            \t\t0. Salir
+            \t\t1. Borrar Collaboration
+            \t\t2. Borrar Entity
+            \t\t3. Borrar Family
+            \t\t4. Borrar Favourite
+            \t\t5. Borrar Implement
+            \t\t6. Borrar Project
+            \t\t7. Borrar Technology
+            \t\t8. Borrar Users
+            ******************************************""");
+
             opcion = libs.Leer.pedirCadena("Introduce una opción");
 
             switch (opcion) {
@@ -29,7 +30,7 @@ public class seleccion {
                 case "6" -> drpProject.eliminarProject();
                 case "7" -> drpTechnology.eliminarTechnology();
                 case "8" -> drpUser.eliminarUser();
-                default -> System.err.println("La opción introducida no es valida");
+                default -> System.err.println(">>> ERROR: La opción introducida no es valida");
             }
         }
     }
