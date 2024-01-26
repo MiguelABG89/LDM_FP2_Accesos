@@ -1,7 +1,6 @@
-package listados;
+package code.listados;
 
 import Singleton.EmfSingleton;
-import entities.CollaborationEntity;
 import entities.UsersEntity;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.Query;

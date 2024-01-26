@@ -1,4 +1,4 @@
-package listados;
+package code.listados;
 
 import Singleton.EmfSingleton;
 import entities.FamilyEntity;
