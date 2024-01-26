@@ -12,12 +12,15 @@ import java.time.LocalDate;
 
 public class insProject {
     public static void insertarProyecto() {
-        String title = Leer.pedirCadena("Inserte el nombre del proyecto");
-        String web = Leer.pedirCadena("Inserte la URL de la web");
-        String projectDescription = Leer.pedirCadena("Inserte la descripción del proyecto");
-        String state = Leer.pedirCadena("Inserte el estado del proyecto ('Pendiente', 'Completado', 'En Curso')");
-//        String initDate = Leer.pedirCadena("Inserte la fecha de inicio del proyecto");  //TODO implementar tambien fecha de inicio
-//        String endDate = Leer.pedirCadena("Inserte la fecha de finalización del proyecto");  //TODO implementar tambien fecha de finalizacion
+
+        System.out.println("\n*****{ NUEVO PROYECTO }*****");
+
+        String title = Leer.pedirCadena("\n> Inserte el nombre del proyecto");
+        String web = Leer.pedirCadena("\n> Inserte la URL de la web");
+        String projectDescription = Leer.pedirCadena("\n> Inserte la descripción del proyecto");
+        String state = Leer.pedirCadena("\n> Inserte el estado del proyecto ('Pendiente', 'Completado', 'En Curso')");
+//        String initDate = Leer.pedirCadena("\n > Inserte la fecha de inicio del proyecto");  //TODO implementar tambien fecha de inicio
+//        String endDate = Leer.pedirCadena("\n > Inserte la fecha de finalización del proyecto");  //TODO implementar tambien fecha de finalizacion
 
         EntityManagerFactory emf = EmfSingleton.getInstance().getEmf();
         EntityManager em = emf.createEntityManager();

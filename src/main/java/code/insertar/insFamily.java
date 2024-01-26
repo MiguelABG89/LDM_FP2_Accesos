@@ -9,8 +9,10 @@ import libs.Leer;
 
 public class insFamily {
     public static void insertarFamily() {
-        String name = Leer.pedirCadena("Inserte el nombre");
-        String code = Leer.pedirCadena("Inserte el codigo");
+
+        System.out.println("\n*****{ NUEVA FAMILIA }*****");
+        String name = Leer.pedirCadena("> Inserte el nombre");
+        String code = Leer.pedirCadena("> Inserte el codigo");
 
         EntityManagerFactory emf = EmfSingleton.getInstance().getEmf();
         EntityManager em = emf.createEntityManager();

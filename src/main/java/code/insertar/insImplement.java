@@ -10,11 +10,31 @@ import libs.Leer;
 
 public class insImplement {
     public static void insertarImplement() {
-        int idProyecto = Leer.pedirEntero("Introduzca el ID del proyecto");
-        int idTecnologia = Leer.pedirEntero("Introduzca el ID de la tecnologia");
+
+        // Declaración de variables -------------
+        boolean idTechEncontrado = false;
+        boolean idProjectEncontrado = false;
+        int idTecnologia = 0;
+        int idProyecto = 0;
+
+        System.out.println("\n*****{ NUEVA IMPLEMENTACIÓN }*****");
+
+        // Pedir Id de PROJECT.
+        while (!idProjectEncontrado) {
+            idProyecto = Leer.pedirEntero("> Introduzca el ID del proyecto");
+            idProjectEncontrado = code.comprobacionesIDs.compIDProject.comIdProject(idProyecto);
+        }
+
+        // Pedir y comprobar el id de TECHNOLOGY.
+        while (!idTechEncontrado) {
+            idTecnologia = Leer.pedirEntero("> Introduzca el ID de la tecnologia");
+            idTechEncontrado = code.comprobacionesIDs.compIDTechnology.compIdTech(idTecnologia);
+        }
 
         EntityManagerFactory emf = EmfSingleton.getInstance().getEmf();
         EntityManager em = emf.createEntityManager();
+
+        // CREAR LA IMPLEMENTACIÓN EN LA BBDD
         try {
             EntityTransaction transaction = em.getTransaction();
             transaction.begin();
@@ -26,10 +46,11 @@ public class insImplement {
             em.persist(implement);
             transaction.commit();
         } catch (Exception e) {
-            System.err.println(">>> Error: " + e.getMessage());
+            System.err.println("\n>>> Error: " + e.getMessage());
             e.printStackTrace();
         } finally {
             em.close();
         }
     }
+
 }

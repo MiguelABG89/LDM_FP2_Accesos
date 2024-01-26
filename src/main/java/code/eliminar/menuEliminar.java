@@ -1,6 +1,6 @@
 package code.eliminar;
 
-public class seleccion {
+public class menuEliminar {
     public static void seleccionarDelete() {
         boolean salir = false;
         String opcion;

@@ -1,6 +1,6 @@
 package code.insertar;
 
-public class seleccion {
+public class menuInsercion {
     public static void seleccionarInserccion() {
         boolean salir = false;
         String opcion;

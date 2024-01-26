@@ -9,17 +9,19 @@ import libs.Leer;
 
 public class insCollaboration {
     public static void insertarCollaboration() {
-        int idProyecto = Leer.pedirEntero("Introduzca el ID del proyecto");
-        int idUsuario = Leer.pedirEntero("Introduzca el ID del usuario");
-        int idFamilia = Leer.pedirEntero("Introduzca el ID de la familia");
-        Boolean esAdmin = Leer.pedirBoolean("El usuario es administrador (S/N)");
+
+        System.out.println("\n*****{ NUEVA COLABORACIÓN }*****");
+
+        int idProyecto = Leer.pedirEntero("> Introduzca el ID del proyecto");
+        int idUsuario = Leer.pedirEntero("> Introduzca el ID del usuario");
+        int idFamilia = Leer.pedirEntero("> Introduzca el ID de la familia");
+        Boolean esAdmin = Leer.pedirBoolean("> ¿El usuario es administrador? (S/N)");
 
         EntityManagerFactory emf = EmfSingleton.getInstance().getEmf();
         EntityManager em = emf.createEntityManager();
         try {
             EntityTransaction transaction = em.getTransaction();
             transaction.begin();
-
 
             CollaborationEntity collaboration = new CollaborationEntity();
             collaboration.setIdProject(idProyecto);

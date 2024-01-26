@@ -9,8 +9,26 @@ import libs.Leer;
 
 public class insFavourite {
     public static void insertarFavourite() {
-        int idProyecto = Leer.pedirEntero("Introduzca el ID del proyecto");
-        int idUsuario = Leer.pedirEntero("Introduzca el ID del usuario");
+
+        // Declaración de variables -----------
+        boolean idProyectoEncontrado = false;
+        boolean idUserEncontrado = false;
+        int idProyecto = 0;
+        int idUsuario = 0;
+
+        System.out.println("\n*****{ NUEVO FAVORITO }*****");
+
+        // Pedir y comprobar el ID de Project
+        while (!idProyectoEncontrado) {
+            idProyecto = Leer.pedirEntero("> Introduzca el ID del proyecto");
+            idProyectoEncontrado = code.comprobacionesIDs.compIDProject.comIdProject(idProyecto);
+        }
+
+        // Pedir y comprobar el ID de User
+        while (!idUserEncontrado) {
+            idUsuario = Leer.pedirEntero("> Introduzca el ID del usuario");
+            idUserEncontrado = code.comprobacionesIDs.compIDUser.comIdUser(idUsuario);
+        }
 
         EntityManagerFactory emf = EmfSingleton.getInstance().getEmf();
         EntityManager em = emf.createEntityManager();
@@ -18,14 +36,14 @@ public class insFavourite {
             EntityTransaction transaction = em.getTransaction();
             transaction.begin();
 
-            FavouriteEntity favourtie = new FavouriteEntity();
-            favourtie.setIdProject(idProyecto);
-            favourtie.setIdUser(idUsuario);
+            FavouriteEntity favourite = new FavouriteEntity();
+            favourite.setIdProject(idProyecto);
+            favourite.setIdUser(idUsuario);
 
-            em.persist(favourtie);
+            em.persist(favourite);
             transaction.commit();
         } catch (Exception e) {
-            System.err.println(">>> Error: " + e.getMessage());
+            System.err.println("\n>>> Error: " + e.getMessage());
             e.printStackTrace();
         } finally {
             em.close();

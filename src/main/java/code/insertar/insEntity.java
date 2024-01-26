@@ -9,10 +9,12 @@ import libs.Leer;
 
 public class insEntity {
     public static void insertarEntity() {
-        String name = Leer.pedirCadena("Introduzca el nombre del centro");
-        String code = Leer.pedirCadena("Introduzca el codigo del centro");
-        String web = Leer.pedirCadena("Introduzca la URL de la web");
-        String email = Leer.pedirCadena("Introduzca el email del centro");
+
+        System.out.println("\n*****{ NUEVO CENTRO }*****");
+        String name = Leer.pedirCadena("> Introduzca el nombre del centro");
+        String code = Leer.pedirCadena("> Introduzca el codigo del centro");
+        String web = Leer.pedirCadena("> Introduzca la URL de la web");
+        String email = Leer.pedirCadena("> Introduzca el email del centro");
 
         EntityManagerFactory emf = EmfSingleton.getInstance().getEmf();
         EntityManager em = emf.createEntityManager();
