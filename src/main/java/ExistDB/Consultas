@@ -1,5 +1,5 @@
-declare variable $b as document-node() external := doc("familias.xml");
-
+let $b := doc("familias.xml")
+return
 <familias>
 {
     for $a in $b//option
@@ -14,8 +14,8 @@ declare variable $b as document-node() external := doc("familias.xml");
 
 
 xquery version "3.1";
-declare variable $xml as document-node() external := doc("proyectosFP.xml");
-
+let $xml := doc("proyectosFP.xml")
+return
 <Proyectos>{
     for $row in $xml//Row
     return

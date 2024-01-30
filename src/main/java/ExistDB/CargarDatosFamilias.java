@@ -1,7 +1,6 @@
 package ExistDB;
 
 import org.exist.http.jaxb.Result;
-import org.exist.source.Source;
 import org.w3c.dom.Node;
 import org.xmldb.api.base.*;
 import org.xmldb.api.modules.XMLResource;
@@ -10,17 +9,21 @@ import org.xmldb.api.modules.XPathQueryService;
 import javax.xml.transform.*;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
+import javax.xml.transform.stream.StreamSource;
 import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.StringReader;
 
 
 public class CargarDatosFamilias {
     static Collection col = null;
-    static Node nodo = null;
-    static XMLResource nodoDom = null;
 
     public static void CargarDatos(){
-        String Consulta="declare variable $b as document-node() external := doc(\"familias.xml\");\n" +
-                "\n" +
+        col = ConexionCollection.conectar();
+
+        String Consulta="let $b := doc(\"familias.xml\")\n" +
+                "return\n" +
                 "<familias>\n" +
                 "{\n" +
                 "    for $a in $b//option\n" +
@@ -43,33 +46,34 @@ public class CargarDatosFamilias {
                 if (!i.hasMoreResources()) {
                     System.out.println(" LA CONSULTA NO DEVUELVE NADA O ESTÁ MAL ESCRITA");
                 }
+                FileWriter fw = new FileWriter("target/Familias.xml");
+                Resource r = null;
+
                 while (i.hasMoreResources()) {
-                    Resource r = i.nextResource();
-                    nodoDom = (XMLResource) r;
-                    nodo = nodoDom.getContentAsDOM();
-                    //creamos la variables XMLResource que nos permite extraer luego un objeto Node
+                    r = i.nextResource();
+                    fw.write(r.getContent().toString());
                 }
-                File archivo = new File("target/Familias.xml");
-                Source source = new DOMSource(nodo); //se crea la fuente xml a partir del resultado de la consulta (Node)
-                Result resultado = new StreamResult(archivo);  //se crea el resultado en el archivo
-                Transformer transformer = TransformerFactory.newInstance().newTransformer();
-                transformer.setOutputProperty(OutputKeys.METHOD, "xml");
-                transformer.setOutputProperty(OutputKeys.ENCODING, "UTF-8");
-                transformer.setOutputProperty(OutputKeys.INDENT, "yes");
-                transformer.setOutputProperty("{http:xml.apache.org/xslt}indent-amount", "4");
-                transformer.transform(source, resultado);
-                System.out.println(nodo);
-                Resource rCol = col.createResource(archivo.getName(), "XMLResource");
-                rCol.setContent(archivo);
-                col.storeResource(rCol);
-                //crear un archivo que lo contiene
+
+                fw.close();
+
+                try {
+                    Transformer transformer = TransformerFactory.newInstance().newTransformer();
+                    Source source = new StreamSource(new StringReader(r.getContent().toString()));
+                    StreamResult result1 = new StreamResult(new File("target/Familias.xml"));
+                    transformer.setOutputProperty(OutputKeys.METHOD, "xml");
+                    transformer.setOutputProperty(OutputKeys.ENCODING, "UTF-8");
+                    transformer.setOutputProperty(OutputKeys.INDENT, "yes");
+                    transformer.setOutputProperty("{http:xml.apache.org/xslt}indent-amount", "4");
+                    transformer.transform(source, result1);
+                } catch (TransformerException e) {
+                    throw new RuntimeException(e);
+                }
+                System.out.println("datos generados");
                 col.close();
             }catch (XMLDBException e){
                 System.out.println(" ERROR AL CONSULTAR DOCUMENTO.");
                 e.printStackTrace();
-            }catch (TransformerConfigurationException e) {
-                throw new RuntimeException(e);
-            } catch (TransformerException e) {
+            } catch (IOException e) {
                 throw new RuntimeException(e);
             }
         }

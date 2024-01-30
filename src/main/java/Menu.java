@@ -1,3 +1,6 @@
+import ExistDB.CargarDatosCentros;
+import ExistDB.CargarDatosFamilias;
+import ExistDB.CargarDatosProyectos;
 import code.eliminar.menuEliminar;
 import code.insertar.menuInsercion;
 import code.listados.menuListado;
@@ -21,7 +24,11 @@ public class Menu {
                 case "0" -> salir = true;
                 case "1" -> menuInsercion.seleccionarInserccion();
                 case "2" -> menuEliminar.seleccionarDelete();
-                case "3" -> {}
+                case "3" -> {
+                    CargarDatosCentros.CargarDatos();
+                    CargarDatosFamilias.CargarDatos();
+                    CargarDatosProyectos.CargarDatos();
+                }
                 case "4" -> menuListado.seleccionarListado();
                 default -> System.err.println("La opción introducida no es valida");
             }
