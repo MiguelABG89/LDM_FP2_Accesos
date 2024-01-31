@@ -1,13 +1,10 @@
-package ExistDB;
+package ExistDB.Data;
 
-import org.exist.http.jaxb.Result;
-import org.w3c.dom.Node;
+import ExistDB.Conexion.ConexionCollection;
 import org.xmldb.api.base.*;
-import org.xmldb.api.modules.XMLResource;
 import org.xmldb.api.modules.XPathQueryService;
 
 import javax.xml.transform.*;
-import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 import javax.xml.transform.stream.StreamSource;
 import java.io.File;
@@ -15,25 +12,27 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.StringReader;
 
-
-public class CargarDatosFamilias {
+public class GenerarXmlDatosProyectos {
     static Collection col = null;
 
     public static void CargarDatos(){
         col = ConexionCollection.conectar();
 
-        String Consulta="let $b := doc(\"familias.xml\")\n" +
+        String Consulta = "let $xml := doc(\"proyectosFP.xml\")\n" +
                 "return\n" +
-                "<familias>\n" +
-                "{\n" +
-                "    for $a in $b//option\n" +
+                "<Proyectos>{\n" +
+                "    for $row in $xml//Row\n" +
                 "    return\n" +
-                "        <familia>\n" +
-                "            <Nombre>{ $a/data() }</Nombre>\n" +
-                "            <Codigo>{$a/@value}</Codigo>\n" +
-                "        </familia>\n" +
-                "}\n" +
-                "</familias>";
+                "        <Proyecto>\n" +
+                "            <CENTROCOORDINADOR>{data($row/CENTROCOORDINADOR)}</CENTROCOORDINADOR>\n" +
+                "            <TÍTULODELPROYECTO>{data($row/TÍTULODELPROYECTO)}</TÍTULODELPROYECTO>\n" +
+                "            <AUTORIZACIÓN>{data($row/AUTORIZACIÓN)}</AUTORIZACIÓN>\n" +
+                "            <CONTINUIDAD>{data($row/CONTINUIDAD)}</CONTINUIDAD>\n" +
+                "            <COORDINACIÓN>{data($row/COORDINACIÓN)}</COORDINACIÓN>\n" +
+                "            <CONTACTO>{data($row/CONTACTO)}</CONTACTO>\n" +
+                "            <CENTROSANEXIONADOS>{data($row/CENTROSANEXIONADOS)}</CENTROSANEXIONADOS>\n" +
+                "        </Proyecto>\n" +
+                "}</Proyectos>";
         if (col!=null) {
             try {
                 XPathQueryService facturasCod1;
@@ -46,7 +45,7 @@ public class CargarDatosFamilias {
                 if (!i.hasMoreResources()) {
                     System.out.println(" LA CONSULTA NO DEVUELVE NADA O ESTÁ MAL ESCRITA");
                 }
-                FileWriter fw = new FileWriter("target/Familias.xml");
+                FileWriter fw = new FileWriter("target/Proyectos.xml");
                 Resource r = null;
 
                 while (i.hasMoreResources()) {
@@ -59,7 +58,7 @@ public class CargarDatosFamilias {
                 try {
                     Transformer transformer = TransformerFactory.newInstance().newTransformer();
                     Source source = new StreamSource(new StringReader(r.getContent().toString()));
-                    StreamResult result1 = new StreamResult(new File("target/Familias.xml"));
+                    StreamResult result1 = new StreamResult(new File("target/Proyectos.xml"));
                     transformer.setOutputProperty(OutputKeys.METHOD, "xml");
                     transformer.setOutputProperty(OutputKeys.ENCODING, "UTF-8");
                     transformer.setOutputProperty(OutputKeys.INDENT, "yes");
@@ -68,15 +67,16 @@ public class CargarDatosFamilias {
                 } catch (TransformerException e) {
                     throw new RuntimeException(e);
                 }
-                System.out.println("datos generados");
+                //crear un archivo que lo contiene
                 col.close();
             }catch (XMLDBException e){
                 System.out.println(" ERROR AL CONSULTAR DOCUMENTO.");
                 e.printStackTrace();
+            } catch (ClassCastException e){
+                System.out.println("No se ha podido castear");
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
         }
     }
-
 }

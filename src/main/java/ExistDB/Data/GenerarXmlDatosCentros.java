@@ -1,24 +1,20 @@
-package ExistDB;
+package ExistDB.Data;
 
-import org.exist.http.jaxb.Result;
+import ExistDB.Conexion.ConexionCollection;
 import org.w3c.dom.Node;
 import org.xmldb.api.base.*;
 import org.xmldb.api.modules.XMLResource;
 import org.xmldb.api.modules.XPathQueryService;
 
 import javax.xml.transform.*;
-import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 import javax.xml.transform.stream.StreamSource;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.StringReader;
-import java.nio.file.Path;
 
-import static libs.CheckFiles.ficheroEscribible;
-
-public class CargarDatosCentros {
+public class GenerarXmlDatosCentros {
     static Collection col = null;
     static Node nodo = null;
     static XMLResource nodoDom = null;
