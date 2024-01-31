@@ -17,13 +17,17 @@ public class insProject {
     public static void insertarProyecto() {
         List<String> opciones = Arrays.asList("Pendiente", "Completado", "En Curso");
 
+        //todo leer el json
+
+
         // Solicitar al usuario que ingrese los datos para el nuevo Proyect
-        String title = Leer.pedirCadena("Inserte el nombre del proyecto");
-        String web = Leer.pedirCadena("Inserte la URL de la web");
-        String projectDescription = Leer.pedirCadena("Inserte la descripción del proyecto");
-        String state = Leer.pedirOpcion("Inserte el estado del proyecto ('Pendiente', 'Completado', 'En Curso')", opciones);
-        Date initDate = Leer.pedirDate("Inserte la fecha de inicio del proyecto (YYYY-mm-dd)");
-        Date endDate = Leer.pedirDate("Inserte la fecha de finalización del proyecto");
+        // todo al leer el json, pasar los datos a las variables
+        String title;
+        String web;
+        String projectDescription;
+        String state;
+        Date initDate;
+        Date endDate;
 
         // Configurar la conexión a la base de datos
         EntityManagerFactory emf = EmfSingleton.getInstance().getEmf();
