@@ -10,33 +10,47 @@ import libs.Leer;
 
 public class insImplement {
     public static void insertarImplement() {
-        // Solicitar al usuario que ingrese los datos para el nuevo Implement
-        int idProyecto = Leer.pedirEntero("Introduzca el ID del proyecto");
-        int idTecnologia = Leer.pedirEntero("Introduzca el ID de la tecnologia");
 
-        // Configurar la conexión a la base de datos
+        // Declaración de variables -------------
+        boolean idTechEncontrado = false;
+        boolean idProjectEncontrado = false;
+        int idTecnologia = 0;
+        int idProyecto = 0;
+
+        System.out.println("\n*****{ NUEVA IMPLEMENTACIÓN }*****");
+
+        // Pedir Id de PROJECT.
+        while (!idProjectEncontrado) {
+            idProyecto = Leer.pedirEntero("> Introduzca el ID del proyecto");
+            idProjectEncontrado = code.comprobacionesIDs.compIDProject.comIdProject(idProyecto);
+        }
+
+        // Pedir y comprobar el id de TECHNOLOGY.
+        while (!idTechEncontrado) {
+            idTecnologia = Leer.pedirEntero("> Introduzca el ID de la tecnologia");
+            idTechEncontrado = code.comprobacionesIDs.compIDTechnology.compIdTech(idTecnologia);
+        }
+
         EntityManagerFactory emf = EmfSingleton.getInstance().getEmf();
         EntityManager em = emf.createEntityManager();
+
+        // CREAR LA IMPLEMENTACIÓN EN LA BBDD
         try {
-            // Iniciar una transacción para garantizar la integridad de los datos
             EntityTransaction transaction = em.getTransaction();
             transaction.begin();
 
-            // Crear un nuevo objeto Implement y asignarle los datos proporcionados
             ImplementEntity implement = new ImplementEntity();
             implement.setIdProject(idProyecto);
             implement.setIdTechnology(idTecnologia);
 
-            // Persistir el nuevo Implement en la base de datos
             em.persist(implement);
             transaction.commit();
         } catch (Exception e) {
-            // Manejar cualquier error que pueda ocurrir durante la inserción
-            System.err.println(">>> Error: " + e.getMessage());
+            System.err.println("\n>>> Error: " + e.getMessage());
             e.printStackTrace();
         } finally {
-            // Cerrar la conexión a la base de datos
             em.close();
         }
     }
+
 }

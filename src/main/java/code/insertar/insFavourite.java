@@ -9,32 +9,43 @@ import libs.Leer;
 
 public class insFavourite {
     public static void insertarFavourite() {
-        // Solicitar al usuario que ingrese los datos para el nuevo Favourite
-        int idProyecto = Leer.pedirEntero("Introduzca el ID del proyecto");
-        int idUsuario = Leer.pedirEntero("Introduzca el ID del usuario");
 
-        // Configurar la conexión a la base de datos
+        // Declaración de variables -----------
+        boolean idProyectoEncontrado = false;
+        boolean idUserEncontrado = false;
+        int idProyecto = 0;
+        int idUsuario = 0;
+
+        System.out.println("\n*****{ NUEVO FAVORITO }*****");
+
+        // Pedir y comprobar el ID de Project
+        while (!idProyectoEncontrado) {
+            idProyecto = Leer.pedirEntero("> Introduzca el ID del proyecto");
+            idProyectoEncontrado = code.comprobacionesIDs.compIDProject.comIdProject(idProyecto);
+        }
+
+        // Pedir y comprobar el ID de User
+        while (!idUserEncontrado) {
+            idUsuario = Leer.pedirEntero("> Introduzca el ID del usuario");
+            idUserEncontrado = code.comprobacionesIDs.compIDUser.comIdUser(idUsuario);
+        }
+
         EntityManagerFactory emf = EmfSingleton.getInstance().getEmf();
         EntityManager em = emf.createEntityManager();
         try {
-            // Iniciar una transacción para garantizar la integridad de los datos
             EntityTransaction transaction = em.getTransaction();
             transaction.begin();
 
-            // Crear un nuevo objeto Favourite y asignarle los datos proporcionados
-            FavouriteEntity favourtie = new FavouriteEntity();
-            favourtie.setIdProject(idProyecto);
-            favourtie.setIdUser(idUsuario);
+            FavouriteEntity favourite = new FavouriteEntity();
+            favourite.setIdProject(idProyecto);
+            favourite.setIdUser(idUsuario);
 
-            // Persistir el nuevo Favourite en la base de datos
-            em.persist(favourtie);
+            em.persist(favourite);
             transaction.commit();
         } catch (Exception e) {
-            // Manejar cualquier error que pueda ocurrir durante la inserción
-            System.err.println(">>> Error: " + e.getMessage());
+            System.err.println("\n>>> Error: " + e.getMessage());
             e.printStackTrace();
         } finally {
-            // Cerrar la conexión a la base de datos
             em.close();
         }
     }
