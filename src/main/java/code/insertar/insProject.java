@@ -19,15 +19,14 @@ public class insProject {
 
         //todo leer el json
 
-
         // Solicitar al usuario que ingrese los datos para el nuevo Proyect
         // todo al leer el json, pasar los datos a las variables
-        String title;
-        String web;
-        String projectDescription;
-        String state;
-        Date initDate;
-        Date endDate;
+        String title = Leer.pedirCadena("Inserte el nombre del proyecto");
+        String web = Leer.pedirCadena("Inserte la URL de la web");
+        String projectDescription = Leer.pedirCadena("Inserte la descripción del proyecto");
+        String state = Leer.pedirOpcion("Inserte el estado del proyecto ('Pendiente', 'Completado', 'En Curso')", opciones);
+        Date initDate = Leer.pedirDate("Inserte la fecha de inicio del proyecto (YYYY-mm-dd)");
+        Date endDate = Leer.pedirDate("Inserte la fecha de finalización del proyecto");
 
         // Configurar la conexión a la base de datos
         EntityManagerFactory emf = EmfSingleton.getInstance().getEmf();
