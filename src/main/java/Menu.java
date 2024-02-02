@@ -1,6 +1,4 @@
-import ExistDB.Data.GenerarXmlDatosCentros;
-import ExistDB.Data.GenerarXmlDatosFamilias;
-import ExistDB.Data.GenerarXmlDatosProyectos;
+import ExistDB.Data.*;
 import code.eliminar.menuEliminar;
 import code.insertar.menuInsercion;
 import code.listados.menuListado;
@@ -30,6 +28,11 @@ public class Menu {
                     GenerarXmlDatosProyectos.CargarDatos();
                 }
                 case "4" -> menuListado.seleccionarListado();
+                case "8" ->{
+                    CargarDatosJsonProyectos.cargarObjetos();
+                    CargarDatosJsonCentros.cargarObjetos();
+                    CargarDatosJsonFamilias.cargarObjetos();
+                }
                 default -> System.err.println("La opción introducida no es valida");
             }
         }

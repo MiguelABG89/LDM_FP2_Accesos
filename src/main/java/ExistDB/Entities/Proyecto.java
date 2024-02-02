@@ -1,5 +1,11 @@
 package ExistDB.Entities;
 
+import javax.xml.bind.annotation.XmlAttribute;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlType;
+
+@XmlRootElement(name="Proyecto")
+@XmlType(propOrder = {"CENTROCOORDINADOR", "TÍTULODELPROYECTO","AUTORIZACIÓN", "CONTINUIDAD","COORDINACIÓN","CONTACTO", "CENTROSANEXIONADOS"})
 public class Proyecto {
     private String CENTROCOORDINADOR;
     private String TÍTULODELPROYECTO;
@@ -18,7 +24,7 @@ public class Proyecto {
         this.CONTACTO = CONTACTO;
         this.CENTROSANEXIONADOS = CENTROSANEXIONADOS;
     }
-
+    @XmlAttribute(name="CENTROCOORDINADOR")
     public String getCENTROCOORDINADOR() {
         return CENTROCOORDINADOR;
     }
@@ -26,7 +32,7 @@ public class Proyecto {
     public void setCENTROCOORDINADOR(String CENTROCOORDINADOR) {
         this.CENTROCOORDINADOR = CENTROCOORDINADOR;
     }
-
+    @XmlAttribute(name="TÍTULODELPROYECTO")
     public String getTÍTULODELPROYECTO() {
         return TÍTULODELPROYECTO;
     }
@@ -34,7 +40,7 @@ public class Proyecto {
     public void setTÍTULODELPROYECTO(String TÍTULODELPROYECTO) {
         this.TÍTULODELPROYECTO = TÍTULODELPROYECTO;
     }
-
+    @XmlAttribute(name="AUTORIZACIÓN")
     public String getAUTORIZACIÓN() {
         return AUTORIZACIÓN;
     }
@@ -42,7 +48,7 @@ public class Proyecto {
     public void setAUTORIZACIÓN(String AUTORIZACIÓN) {
         this.AUTORIZACIÓN = AUTORIZACIÓN;
     }
-
+    @XmlAttribute(name="CONTINUIDAD")
     public String getCONTINUIDAD() {
         return CONTINUIDAD;
     }
@@ -50,7 +56,7 @@ public class Proyecto {
     public void setCONTINUIDAD(String CONTINUIDAD) {
         this.CONTINUIDAD = CONTINUIDAD;
     }
-
+    @XmlAttribute(name="COORDINACIÓN")
     public String getCOORDINACIÓN() {
         return COORDINACIÓN;
     }
@@ -58,7 +64,7 @@ public class Proyecto {
     public void setCOORDINACIÓN(String COORDINACIÓN) {
         this.COORDINACIÓN = COORDINACIÓN;
     }
-
+    @XmlAttribute(name="CONTACTO")
     public String getCONTACTO() {
         return CONTACTO;
     }
@@ -66,7 +72,7 @@ public class Proyecto {
     public void setCONTACTO(String CONTACTO) {
         this.CONTACTO = CONTACTO;
     }
-
+    @XmlAttribute(name="CENTROSANEXIONADOS")
     public String getCENTROSANEXIONADOS() {
         return CENTROSANEXIONADOS;
     }

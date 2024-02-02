@@ -1,22 +1,27 @@
 package ExistDB.Entities;
 
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlElementWrapper;
+import javax.xml.bind.annotation.XmlRootElement;
 import java.util.ArrayList;
+@XmlRootElement(name="Familias")
 
 public class Familias {
-    private ArrayList<Familia> listFamilias;
+    private ArrayList<Familia> familias;
 
     public Familias() {
     }
 
     public Familias(ArrayList<Familia> listFamilias) {
-        this.listFamilias = listFamilias;
+        this.familias = listFamilias;
+    }
+    @XmlElementWrapper(name ="familias")
+    @XmlElement(name="familia")
+    public ArrayList<Familia> getFamilias() {
+        return familias;
     }
 
-    public ArrayList<Familia> getListFamilias() {
-        return listFamilias;
-    }
-
-    public void setListFamilias(ArrayList<Familia> listFamilias) {
-        this.listFamilias = listFamilias;
+    public void setFamilias(ArrayList<Familia> familias) {
+        this.familias = familias;
     }
 }
