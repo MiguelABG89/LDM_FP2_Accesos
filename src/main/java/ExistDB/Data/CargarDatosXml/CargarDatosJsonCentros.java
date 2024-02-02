@@ -1,12 +1,12 @@
-package ExistDB.Data;
+package ExistDB.Data.CargarDatosXml;
 
+import ExistDB.Data.GenerarJsons.GenerarJsonCentros;
 import ExistDB.Entities.Centro;
 import ExistDB.Entities.Centros;
+import jakarta.xml.bind.JAXBContext;
+import jakarta.xml.bind.JAXBException;
+import jakarta.xml.bind.Unmarshaller;
 
-import javax.xml.bind.JAXBContext;
-import javax.xml.bind.JAXBException;
-import javax.xml.bind.Unmarshaller;
-import java.io.File;
 import java.nio.file.Path;
 
 public class CargarDatosJsonCentros {
@@ -21,5 +21,6 @@ public class CargarDatosJsonCentros {
         }catch (JAXBException e){
             e.printStackTrace();
         }
+        GenerarJsonCentros.generarJson(centros);
     }
 }

@@ -1,10 +1,13 @@
 package ExistDB.Entities;
 
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlElementWrapper;
-import javax.xml.bind.annotation.XmlRootElement;
+import jakarta.xml.bind.annotation.XmlElement;
+
+import jakarta.xml.bind.annotation.XmlRootElement;
+import jakarta.xml.bind.annotation.XmlType;
+
 import java.util.ArrayList;
 @XmlRootElement(name="Proyectos")
+@XmlType(propOrder = {"proyectos"})
 public class Proyectos {
     private ArrayList<Proyecto> proyectos;
 
@@ -14,8 +17,7 @@ public class Proyectos {
     public Proyectos(ArrayList<Proyecto> listProyectos) {
         this.proyectos = listProyectos;
     }
-    @XmlElementWrapper(name ="proyectos")
-    @XmlElement(name="proyecto")
+    @XmlElement(name="Proyecto")
     public ArrayList<Proyecto> getProyectos() {
         return proyectos;
     }

@@ -1,33 +1,37 @@
 package ExistDB.Entities;
 
-import javax.xml.bind.annotation.XmlAttribute;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlType;
+import jakarta.xml.bind.annotation.XmlAttribute;
+import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlRootElement;
+import jakarta.xml.bind.annotation.XmlType;
 
 @XmlRootElement(name="Familia")
-@XmlType(propOrder = {"Nombre", "Codigo"})
+@XmlType(propOrder = {"nombre"})
 public class Familia {
-    private String Nombre;
-    private int Codigo;
+    private String nombre;
+    private int codigo;
+
+    public Familia() {
+    }
 
     public Familia(String nombre, int codigo) {
-        Nombre = nombre;
-        Codigo = codigo;
+        this.nombre = nombre;
+        this.codigo = codigo;
     }
-    @XmlAttribute(name="Nombre")
+    @XmlElement(name="nombre")
     public String getNombre() {
-        return Nombre;
+        return nombre;
     }
 
     public void setNombre(String nombre) {
-        Nombre = nombre;
+        this.nombre = nombre;
     }
-    @XmlAttribute(name="Codigo")
+    @XmlAttribute(name="value")
     public int getCodigo() {
-        return Codigo;
+        return codigo;
     }
 
     public void setCodigo(int codigo) {
-        Codigo = codigo;
+        this.codigo = codigo;
     }
 }

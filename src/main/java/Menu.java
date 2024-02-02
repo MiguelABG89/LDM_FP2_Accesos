@@ -1,4 +1,9 @@
-import ExistDB.Data.*;
+import ExistDB.Data.CargarDatosXml.CargarDatosJsonCentros;
+import ExistDB.Data.CargarDatosXml.CargarDatosJsonFamilias;
+import ExistDB.Data.CargarDatosXml.CargarDatosJsonProyectos;
+import ExistDB.Data.GenerarXml.GenerarXmlDatosCentros;
+import ExistDB.Data.GenerarXml.GenerarXmlDatosFamilias;
+import ExistDB.Data.GenerarXml.GenerarXmlDatosProyectos;
 import code.eliminar.menuEliminar;
 import code.insertar.menuInsercion;
 import code.listados.menuListado;
@@ -20,7 +25,7 @@ public class Menu {
 
             switch (opcion) {
                 case "0" -> salir = true;
-                case "1" -> menuInsercion.seleccionarInserccion();
+                case "1" -> menuInsercion.seleccionarInsercion();
                 case "2" -> menuEliminar.seleccionarDelete();
                 case "3" -> {
                     GenerarXmlDatosCentros.CargarDatos();

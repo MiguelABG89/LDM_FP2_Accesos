@@ -1,53 +1,56 @@
 package ExistDB.Entities;
 
-import javax.xml.bind.annotation.XmlAttribute;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlType;
 
+import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlRootElement;
+import jakarta.xml.bind.annotation.XmlType;
 @XmlRootElement(name="Centro")
-@XmlType(propOrder = {"Nombre", "Codigo","Web", "Correo"})
+@XmlType(propOrder = {"nombre", "codigo","web", "correoElectronico"})
 public class Centro {
-    private String Nombre;
-    private int Codigo;
-    private String Web;
-    private String Correo;
+    private String nombre;
+    private int codigo;
+    private String web;
+    private String correoElectronico;
+
+    public Centro() {
+    }
 
     public Centro(String nombre, int codigo, String web, String correo) {
-        Nombre = nombre;
-        Codigo = codigo;
-        Web = web;
-        Correo = correo;
+        this.nombre = nombre;
+        this.codigo = codigo;
+        this.web = web;
+        correoElectronico = correo;
     }
-    @XmlAttribute(name="Nombre")
+    @XmlElement(name="nombre")
     public String getNombre() {
-        return Nombre;
+        return nombre;
     }
 
     public void setNombre(String nombre) {
-        Nombre = nombre;
+        this.nombre = nombre;
     }
-    @XmlAttribute(name="Codigo")
+    @XmlElement(name="codigo")
     public int getCodigo() {
-        return Codigo;
+        return codigo;
     }
 
     public void setCodigo(int codigo) {
-        Codigo = codigo;
+        this.codigo = codigo;
     }
-    @XmlAttribute(name="Web")
+    @XmlElement(name="web")
     public String getWeb() {
-        return Web;
+        return web;
     }
 
     public void setWeb(String web) {
-        Web = web;
+        this.web = web;
     }
-    @XmlAttribute(name="Correo")
-    public String getCorreo() {
-        return Correo;
+    @XmlElement(name="correoElectronico")
+    public String getCorreoElectronico() {
+        return correoElectronico;
     }
 
-    public void setCorreo(String correo) {
-        Correo = correo;
+    public void setCorreoElectronico(String correoElectronico) {
+        this.correoElectronico = correoElectronico;
     }
 }

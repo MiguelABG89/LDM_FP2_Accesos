@@ -1,13 +1,12 @@
-package ExistDB.Data;
+package ExistDB.Data.CargarDatosXml;
 
-import ExistDB.Entities.Centro;
-import ExistDB.Entities.Centros;
+import ExistDB.Data.GenerarJsons.GenerarJsonFamilias;
 import ExistDB.Entities.Familia;
 import ExistDB.Entities.Familias;
 
-import javax.xml.bind.JAXBContext;
-import javax.xml.bind.JAXBException;
-import javax.xml.bind.Unmarshaller;
+import jakarta.xml.bind.JAXBContext;
+import jakarta.xml.bind.JAXBException;
+import jakarta.xml.bind.Unmarshaller;
 import java.nio.file.Path;
 
 public class CargarDatosJsonFamilias {
@@ -22,5 +21,6 @@ public class CargarDatosJsonFamilias {
         }catch (JAXBException e){
             e.printStackTrace();
         }
+        GenerarJsonFamilias.generarJson(familias);
     }
 }

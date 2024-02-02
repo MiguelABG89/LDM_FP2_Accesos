@@ -1,4 +1,4 @@
-package ExistDB.Data;
+package ExistDB.Data.GenerarXml;
 
 import ExistDB.Conexion.ConexionCollection;
 import org.xmldb.api.base.*;
@@ -26,8 +26,8 @@ public class GenerarXmlDatosFamilias {
                 "    for $a in $b//option\n" +
                 "    return\n" +
                 "        <familia>\n" +
-                "            <Nombre>{ $a/data() }</Nombre>\n" +
-                "            <Codigo>{$a/@value}</Codigo>\n" +
+                "            <nombre>{ $a/data() }</nombre>\n" +
+                "            <codigo>{$a/@value}</codigo>\n" +
                 "        </familia>\n" +
                 "}\n" +
                 "</familias>";

@@ -1,10 +1,14 @@
 package ExistDB.Entities;
 
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlElementWrapper;
-import javax.xml.bind.annotation.XmlRootElement;
+
+import jakarta.xml.bind.annotation.XmlElement;
+
+import jakarta.xml.bind.annotation.XmlRootElement;
+import jakarta.xml.bind.annotation.XmlType;
+
 import java.util.ArrayList;
 @XmlRootElement(name="Centros")
+@XmlType(propOrder = {"centros"})
 
 public class Centros {
     private ArrayList<Centro> centros;
@@ -15,8 +19,7 @@ public class Centros {
     public Centros(ArrayList<Centro> centros) {
         this.centros = centros;
     }
-    @XmlElementWrapper(name ="centros")
-    @XmlElement(name="centro")
+    @XmlElement(name="Centro")
     public ArrayList<Centro> getCentros() {
         return centros;
     }

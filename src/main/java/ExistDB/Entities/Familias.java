@@ -1,11 +1,14 @@
 package ExistDB.Entities;
 
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlElementWrapper;
-import javax.xml.bind.annotation.XmlRootElement;
-import java.util.ArrayList;
-@XmlRootElement(name="Familias")
 
+import jakarta.xml.bind.annotation.XmlElement;
+
+import jakarta.xml.bind.annotation.XmlRootElement;
+import jakarta.xml.bind.annotation.XmlType;
+
+import java.util.ArrayList;
+@XmlRootElement(name="familias")
+@XmlType(propOrder = {"familias"})
 public class Familias {
     private ArrayList<Familia> familias;
 
@@ -15,7 +18,6 @@ public class Familias {
     public Familias(ArrayList<Familia> listFamilias) {
         this.familias = listFamilias;
     }
-    @XmlElementWrapper(name ="familias")
     @XmlElement(name="familia")
     public ArrayList<Familia> getFamilias() {
         return familias;
