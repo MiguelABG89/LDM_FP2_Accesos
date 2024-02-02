@@ -2,7 +2,6 @@ package code.comprobacionesIDs;
 
 import Singleton.EmfSingleton;
 import entities.ProjectEntity;
-import entities.TechnologyEntity;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.Query;
 

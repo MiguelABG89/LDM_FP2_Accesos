@@ -1,12 +1,12 @@
 package code.insertar;
 
 public class menuInsercion {
-    public static void seleccionarInserccion() {
+    public static void seleccionarInsercion() {
         boolean salir = false;
         String opcion;
         while (!salir) {
             System.out.println("""
-                    *******************************************
+                    \n*******************************************
                     0. Salir
                     1. Insertar Collaboration
                     2. Insertar Entity

@@ -18,7 +18,7 @@ public class Menu {
 
             switch (opcion) {
                 case "0" -> salir = true;
-                case "1" -> menuInsercion.seleccionarInserccion();
+                case "1" -> menuInsercion.seleccionarInsercion();
                 case "2" -> menuEliminar.seleccionarDelete();
                 case "3" -> {}
                 case "4" -> {}
