@@ -5,7 +5,7 @@ import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlRootElement;
 import jakarta.xml.bind.annotation.XmlType;
 
-@XmlRootElement(name="Familia")
+@XmlRootElement(name="familia")
 @XmlType(propOrder = {"nombre"})
 public class Familia {
     private String nombre;
@@ -26,6 +26,7 @@ public class Familia {
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
+
     @XmlAttribute(name="value")
     public int getCodigo() {
         return codigo;
