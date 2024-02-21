@@ -1,4 +1,4 @@
-package code.classes;
+package code.dtos;
 
 import java.sql.Blob;
 import java.util.Date;

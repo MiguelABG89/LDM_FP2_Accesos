@@ -1,0 +1,7 @@
+{
+  "Id": 1,
+  "EntityName": "Nombre de la Entidad",
+  "EntityCode": "ENT001",
+  "Web": "http://www.entidad.com",
+  "Email": "info@entidad.com"
+}
