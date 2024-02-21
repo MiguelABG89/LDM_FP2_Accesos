@@ -1,0 +1,13 @@
+
+    {
+      "IdUser": 1,
+      "IdFamily": 101,
+      "IsManager": true,
+      "Title": "Proyecto A",
+      "Logo": null,
+      "Web": "http://www.proyectoA.com",
+      "ProjectDescription": "Descripción del Proyecto A",
+      "State": "Completado",
+      "InitDate": "2023-01-01",
+      "EndDate": "2023-12-31"
+    }
