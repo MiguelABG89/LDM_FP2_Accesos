@@ -1,5 +1,6 @@
-package ExistDB;
+package ExistDB.Data;
 
+import ExistDB.Conexion.ConexionCollection;
 import com.aspose.cells.Workbook;
 import org.w3c.dom.Node;
 import org.xmldb.api.base.Collection;

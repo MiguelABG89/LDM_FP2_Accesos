@@ -1,0 +1,34 @@
+let $b := doc("familias.xml")
+return
+<familias>
+{
+    for $a in $b//option
+    return
+        <familia>
+            <Nombre>{ $a/data() }</Nombre>
+            <Codigo>{$a/@value}</Codigo>
+        </familia>
+}
+</familias>
+
+
+
+xquery version "3.1";
+let $xml := doc("proyectosFP.xml")
+return
+<Proyectos>{
+    for $row in $xml//Row
+    return
+        <Proyecto>
+            <CENTROCOORDINADOR>{data($row/CENTROCOORDINADOR)}</CENTROCOORDINADOR>
+            <TÍTULODELPROYECTO>{data($row/TÍTULODELPROYECTO)}</TÍTULODELPROYECTO>
+            <AUTORIZACIÓN>{data($row/AUTORIZACIÓN)}</AUTORIZACIÓN>
+            <CONTINUIDAD>{data($row/CONTINUIDAD)}</CONTINUIDAD>
+            <COORDINACIÓN>{data($row/COORDINACIÓN)}</COORDINACIÓN>
+            <CONTACTO>{data($row/CONTACTO)}</CONTACTO>
+            <CENTROSANEXIONADOS>{data($row/CENTROSANEXIONADOS)}</CENTROSANEXIONADOS>
+        </Proyecto>
+}</Proyectos>
+
+
+
